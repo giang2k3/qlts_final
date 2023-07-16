@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chương trình quản lý tuyển sinh</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="home.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa-solid fa-school me-3"></i>AMSYS</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="home.html" class="nav-item nav-link active">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                      VIEW                  
+                    </a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="xemthongtinsvien.php" class="dropdown-item">View Information</a>
+                        <a href="diemNamTrc.php" class="dropdown-item">View Last Year's Scores</a>
+                        <a href="xemdiem.php" class="dropdown-item">View Student's Scores</a>
+                        <a href="phanhoicuagiangvien.php" class="dropdown-item">View Feedback</a>
+                    </div>
+                </div>
+                
+                <a href="guiyeucau.php" class="nav-item nav-link">SEND REQUEST</a>
+                <a href="./dangkykhoi.php" class="nav-item nav-link">Block Register</a>
+                <a href="./luachonnganh.php" class="nav-item nav-link">Choose Major</a>
+                <a href="./xoanganh.php" class="nav-item nav-link">Remove Major</a>
+                <a href="./xepnguyenvong.php" class="nav-item nav-link">Prioritize</a>
+
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img
+                        src="https://static.vecteezy.com/system/resources/thumbnails/000/511/962/small/57_Student.jpg"
+                        class="rounded-circle"
+                        height="20"
+                        alt=""
+                        loading="lazy"
+                      />
+                      STUDENT ACCOUNT                   
+                    </a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="xemthongtinsvien.php" class="dropdown-item">View information</a>
+                        <!-- <div class="dropdown-item" onclick="go()">Logout</div> -->
+                        <a href="index.php" class="dropdown-item">Log out</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/bachkhoa.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h1 class="display-3 text-white animated slideInDown">Chào mừng đến với AMSYS!</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Hệ thống AMSYS (Admission Management System) là một dự án được thiết kế để hỗ trợ quá trình tuyển sinh. Hệ thống cung cấp nhiều chức năng hữu ích cho thí sinh.<br>                                    
+                                    Đối với thí sinh, hệ thống cho phép họ truy cập và xem thông tin cá nhân, bao gồm thông tin đăng ký, kết quả thi và điểm số. Thí sinh cũng có thể gửi yêu cầu và nhận phản hồi từ hội đồng thi. Bên cạnh đó, hệ thống cũng cung cấp rất nhiều chức năng hữu ích khác như: xem điểm chuẩn năm trước, đăng ký ngành, khối thi, xóa ngành và xếp nguyện vọng.</p>
+                                <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/xxw-dsc9346-agej.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h1 class="display-3 text-white animated slideInDown">Chào mừng đến với AMSYS!</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Cảm ơn bạn đã quan tâm đến hệ thống quản lý tuyển sinh của chúng tôi. Chúng tôi hi vọng rằng dự án này sẽ đáp ứng được nhu cầu của bạn và mang lại trải nghiệm tốt nhất cho quá trình tuyển sinh.</p>
+                                <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3"><a href="xemthongtinsvien.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-users-viewfinder text-primary mb-4"></i>
+                            <h5 class="mb-3">Xem thông tin</h5>
+                            <p> Thí sinh có thể xem các thông tin như họ và tên, ngày sinh, địa chỉ và thông tin đăng ký tuyển sinh<br><br></p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3"><a href="guiyeucau.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-share-from-square text-primary mb-4"></i>
+                            <h5 class="mb-3">Gửi yêu cầu</h5>
+                            <p>Thí sinh có thể gửi yêu cầu đến hội đồng thi. Yêu cầu có thể liên quan đến thông tin tuyển sinh, điểm số hoặc bất kỳ vấn đề nào khác liên quan đến quá trình tuyển sinh.</p>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3"><a href="xemdiem.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-eye text-primary mb-4"></i>
+                            <h5 class="mb-3">Xem điểm</h5>
+                            <p>Hệ thống sẽ hiển thị điểm số bài thi của thí sinh cùng điểm theo các khối thi<br><br><br></p>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="phanhoicuagiangvien.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-reply text-primary mb-4"></i>
+                            <h5 class="mb-3">Xem phản hồi của giảng viên</h5>
+                            <p>Sau khi gửi yêu cầu, thí sinh sẽ nhận được phản hồi từ hội đồng thi thông qua hệ thống. Thí sinh có thể xem và đọc phản hồi từ hội đồng thi để có được thông tin và hỗ trợ cần thiết.</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="./diemNamTrc.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-binoculars text-primary mb-4"></i>
+                            <h5 class="mb-3">Xem điểm chuẩn năm trước</h5>
+                            <p>Thí sinh có thể tra cứu và xem các điểm chuẩn của các ngành học trong năm trước đó. Thông tin này giúp thí sinh có cái nhìn tổng quan về mức độ cạnh tranh và tiêu chí đánh giá khi đăng ký ngành học.</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="./dangkykhoi.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-circle-check text-primary mb-4"></i>
+                            <h5 class="mb-3">Đăng ký khối thi</h5>
+                            <p>Hệ thống cung cấp danh sách các khối thi có sẵn, và thí sinh có thể chọn khối thi tương ứng với sở thích và năng lực của mình. <br><br></p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="./luachonnganh.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-square-check text-primary mb-4"></i>
+                            <h5 class="mb-3">Đăng ký ngành học</h5>
+                            <p>Sau khi đăng ký khối thi, thí sinh có thể lựa chọn ngành học. Hệ thống cung cấp danh sách các ngành học có sẵn, và thí sinh có thể chọn ngành học phù hợp với sở thích và mục tiêu học tập của mình.</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="./xoanganh.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-eraser text-primary mb-4"></i>
+                            <h5 class="mb-3">Xóa ngành học</h5>
+                            <p>Trong trường hợp muốn thay đổi hoặc xem xét các lựa chọn khác, thí sinh có thể sử dụng chức năng này để xóa ngành học đã đăng ký trước đó.<br><br></p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3"><a href="./xepnguyenvong.php">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-solid fa-arrow-up-1-9 text-primary mb-4"></i>
+                            <h5 class="mb-3">Xếp nguyện vọng</h5>
+                            <p>Thí sinh có thể sử dụng chức năng này để xếp nguyện vọng cho các ngành học đã đăng ký. Thí sinh có thể xác định thứ tự ưu tiên của các ngành học và đánh dấu sự ưu tiên của mình. </p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="img/sv.jpg" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                    <h1 class="mb-4">Chào mừng đến với AMSYS</h1>
+                    <p class="mb-4">AMSYS là một dự án được thiết kế để hỗ trợ quá trình tuyển sinh của một trường đại học. Hệ thống cung cấp nhiều chức năng hữu ích cho thí sinh:</p>
+                    <!-- <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p> -->
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xem thông tin</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Gửi yêu cầu</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xem điểm</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xem phản hồi của hội đồng thi</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xem điểm chuẩn năm trước</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Đăng ký khối thi</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Đăng ký ngành học</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xóa ngành học</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Xếp nguyện vọng</p>
+                        </div>
+
+
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">OUR TEAM</h6>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Hoàng Nguyễn Trường Giang</h5>
+                            <small>FRONT-END</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Phạm Công Hào</h5>
+                            <small>FRONT-END</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Phạm Minh Đạt</h5>
+                            <small>BACK-END</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item bg-light">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Bùi Tá Đức</h5>
+                            <small>BACK-END</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6 col-md-6">
+                    <h4 class="text-white mb-3">Quick Link</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Our Team</a>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Số 1 Đại Cồ Việt, phường Bách Khoa, quận Hai Bà Trưng, Hà Nội, Việt Nam</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">AMSYS</a>, All Right Reserved.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        <span style="color: #181d38;"></a>Designed By HTML Codex</span><br><br>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="">FQAs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/533391d722.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!-- <script>
+        function go(){
+            window.location.href="index.php";
+        }
+    </script> -->
+</body>
+
+</html>
