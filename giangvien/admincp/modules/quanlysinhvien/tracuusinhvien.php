@@ -109,7 +109,7 @@
 
             <div class="form">
               <i class="fa fa-search"></i>
-              <input type="text" name="student_id" class="form-control form-input" placeholder="Nhập tên/ Mã dự thi" required>
+              <input type="text" name="student_id" class="form-control form-input" placeholder="Nhập mã dự thi" required>
             </div>
             
           </div>
@@ -165,8 +165,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["student_id"])) {
         echo "<td>" .$row_student['student_gender'] . "</td></tr>";
         echo "<tr><td>Địa chỉ</td>";
         echo "<td>" .$row_student['student_address'] . "</td></tr>";
-        echo "<tr><td>Khối thi</td>";
-        echo "<td>" .$row_student['block_name'] . "</td></tr>";
+        //echo "<tr><td>Khối thi</td>";
+       // echo "<td>" .$row_student['block_name'] . "</td></tr>";
 
         // Thực hiện truy vấn SELECT để lấy điểm số môn học của sinh viên
         $sql_results = "SELECT exams.exam_name, results.result_score
@@ -179,10 +179,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["student_id"])) {
         if (mysqli_num_rows($result_results) > 0) {
             // Hiển thị tên môn kèm điểm số
             while ($row_results = mysqli_fetch_assoc($result_results)) {
-                echo "<tr><td>Môn " . $row_results['exam_name'] . "</td>";
+                echo "<tr><td> " . $row_results['exam_name'] . "</td>";
                 echo "<td>" . $row_results['result_score'] . "</td></tr>";
             }
-
+            $sql_block = "SELECT b.block_name FROM Blocks b
+                          INNER JOIN student_blocks sb ON b.block_id = sb.block_id
+                          WHERE student_id = '$student_id'";
+            $result_block = mysqli_query($conn, $sql_block);
+            if (mysqli_num_rows($result_block) > 0) {
+                // Hiển thị tên môn kèm điểm số
+               
+                while ($row_block = mysqli_fetch_assoc($result_block)) {
+                    echo "<tr><td>Khối thi</td>";
+                    echo "<td>" .$row_block['block_name'] . "</td></tr>";
+                }
+            } else {
+                 echo "<tr><td colspan='2'>Chưa đăng ký khối nào.</td></tr>";
+            }
             $sql_major = "SELECT m.major_name, ms.major_level FROM majors m
                             INNER JOIN major_student ms ON m.major_id = ms.major_id
                             WHERE student_id = '$student_id'";
@@ -194,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["student_id"])) {
                     echo "<td>Ngành: " . $row_major['major_name'] . "</td></tr>";
                 }
             } else {
-                echo "<td colspan='2'>Chưa đăng ký nguyện vọng nào.</td>";
+                echo "<tr><td colspan='2'>Chưa đăng ký nguyện vọng nào.</td></tr>";
             }
         } else {
             echo '<script>alert("Không có thông tin điểm số môn học của sinh viên này.")</script>';
