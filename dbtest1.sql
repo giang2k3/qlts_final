@@ -7,6 +7,7 @@ CREATE TABLE Students (
   student_gender ENUM('Male', 'Female'),
   student_address VARCHAR(100),
   student_password VARCHAR(50) NOT NULL,
+  message TEXT
 );
 
 CREATE TABLE Exams (
@@ -33,11 +34,7 @@ CREATE TABLE feedbacks (
     FOREIGN KEY (student_id) REFERENCES Students(student_id)
 );
 
-DROP TABLE Appeals;
-DROP TABLE Results;
-DROP TABLE Exams;
-DROP TABLE feedbacks;
-DROP TABLE Students;
+
 
 INSERT INTO Exams (exam_id,exam_name,exam_date) VALUES
 (1,'Math','2021-7-2'),
@@ -140,8 +137,6 @@ CREATE TABLE Exam_Block (
 );
 
 ALTER TABLE Students ADD block_name VARCHAR(10)
-
-EXEC sp_rename 'Exam_Block_Subjects', 'Exam_Block';
 
 CREATE TABLE Major_Student(
 	student_id INT,
